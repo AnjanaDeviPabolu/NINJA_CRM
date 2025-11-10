@@ -1,5 +1,8 @@
 package contactTest;
-
+//<<<<<<< HEAD
+//
+//=======
+//>>>>>>> branch 'master' of https://github.com/AnjanaDeviPabolu/NINJA_CRM.git
 import org.testng.annotations.Test;
 
 public class Github {

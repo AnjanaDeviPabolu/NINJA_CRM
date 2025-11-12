@@ -11,8 +11,8 @@
 	</listeners>
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="campaigntest.CreateCampaign_Test" />
-			<class name="contacttest.CreateContactTest" />
+			<class name="campaignTest.CreateCampaign_Test" />
+			<class name="contactTest.CreateContactTest" />
 		</classes>
 	</test> <!--
 	Test -->

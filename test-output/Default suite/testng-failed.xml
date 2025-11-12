@@ -3,19 +3,21 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="campaignTest.CreateCampaign_Test">
+      <class name="contactTest.CreateContactTest">
         <methods>
+          <include name="CreateContact_With_Department_Test"/>
           <include name="afterClass"/>
+          <include name="CreateContact_With_Email_Test"/>
           <include name="afterSuite"/>
           <include name="beforeClass"/>
           <include name="beforeMethod"/>
-          <include name="CreateCampaign_With_MandatoryFields_Test"/>
+          <include name="CreateContact_With_MandatoryFields_Test"/>
           <include name="beforeTest"/>
           <include name="afterMethod"/>
           <include name="afterTest"/>
           <include name="beforeSuite"/>
         </methods>
-      </class> <!-- campaignTest.CreateCampaign_Test -->
+      </class> <!-- contactTest.CreateContactTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

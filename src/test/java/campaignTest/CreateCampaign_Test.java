@@ -1,6 +1,7 @@
 package campaignTest;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,30 +46,31 @@ public class CreateCampaign_Test extends BaseClass{
 		campaignpage.getGetAddCreateCampaignBtn().click();
 
 		createcampaignpage.getCampaignNameTF().sendKeys(CampaignName);
+//		createcampaignpage.getTargetsizeTF().clear();
 		createcampaignpage.getTargetsizeTF().sendKeys(TargetSize);
 		createcampaignpage.getCreatecampaignBTn().click();
 
 		WebElement alertmsgtext = homepage.getToastMsg();
 		wLib.waitUntilElementToBeVisible(driver, alertmsgtext);
 		String msg = alertmsgtext.getText();
+		
+		Assert.assertTrue(msg.contains(AlertMsg));
+		
 //		if(alertmsgtext.getText().contains(AlertMsg)) {
 //			System.out.println("campaign created");
 //		}
 //		else
 //		{
 //			System.out.println("campaign not created");
-//		}
+//		}	
 		
-		homepage.getToastCloseBtn().click();	
-		
-		Assert.assertTrue(msg.contains("hjkrytuyiubnm"));
-		
+		homepage.getToastCloseBtn().click();
 		 
 
 	}
 	
 	
-	@Test(groups = {"smoke"})
+	@Test(groups = "smoke")
 	public void CreateCampaign_With_status_Test() throws IOException {
 
 		String CampaignName = ExceLib.getExcelUtilityFile("Create_Campaign", 4, 2);
@@ -108,7 +110,7 @@ public class CreateCampaign_Test extends BaseClass{
 	}
 	
 	
-	@Test(groups = {"smoke"})
+	@Test(groups = "smoke")
 	public void CreateCampaign_With_ExpectedCloseDate_Test() throws EncryptedDocumentException, IOException {
 		
 //		PropertiesUtilityFile propLib=new PropertiesUtilityFile();
@@ -187,7 +189,7 @@ public class CreateCampaign_Test extends BaseClass{
 	}
 	
 	
-	@Test(groups = {"smoke"})
+	@Test(groups = "smoke")
 	public void CreateCampaign_CompleteTest() throws IOException {
 
 		 String CampaignName = ExceLib.getExcelUtilityFile("Create_Campaign", 10, 2);

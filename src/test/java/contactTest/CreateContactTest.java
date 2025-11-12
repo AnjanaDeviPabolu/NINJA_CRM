@@ -164,7 +164,7 @@ public class CreateContactTest extends BaseClass{
 	}
 	
 	
-	@Test(groups = {"smoke"})
+	@Test(groups = "smoke")
 	public void CreateContact_With_Department_Test() throws EncryptedDocumentException, IOException {
 
 		 String CampaignName = ExceLib.getExcelUtilityFile("Create_Contact", 4, 2);
@@ -258,7 +258,7 @@ public class CreateContactTest extends BaseClass{
 	}
 	
 	
-	@Test(groups = {"smoke"})
+	@Test(groups = "smoke")
 	public void CreateContact_With_Email_Test() throws EncryptedDocumentException, IOException {
 		 
 		 //get testScript data from Excel file

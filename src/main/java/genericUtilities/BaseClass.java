@@ -29,92 +29,83 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.AfterSuite;
 
 public class BaseClass {
-	
-	public WebDriver driver=null;
-	public PropertiesUtilityFile propLib=new PropertiesUtilityFile();
-	public ExcelUtilityFile ExceLib=new ExcelUtilityFile();
-	public WebDriverUtility wLib=new WebDriverUtility();
-	public static WebDriver sdriver=null;
-	
-  @BeforeSuite
-  public void beforeSuite() {
-	  System.out.println("Establish the database connection");
-  }
-  
-  
-  @BeforeTest
-  public void beforeTest() {
-	  System.out.println("Pre-conditions for parallel execution");
-  }
-  
-  
-  @BeforeClass
-  public void beforeClass() throws IOException {
-	  
-	Reporter.log("Launching the Browser",true);
-	 
-	String BROWSER = propLib.getPropertiesUtilityFile("Browser");
-	 
-	ChromeOptions settings = new ChromeOptions();
-	Map<String, Object> prefs = new HashMap<>();
-	prefs.put("profile.password_manager_leak_detection", false);
-	settings.setExperimentalOption("prefs", prefs);
-	
-	if(BROWSER.equalsIgnoreCase("chrome")) {
-		driver=new ChromeDriver(settings);
+
+	public WebDriver driver = null;
+	public PropertiesUtilityFile propLib = new PropertiesUtilityFile();
+	public ExcelUtilityFile ExceLib = new ExcelUtilityFile();
+	public WebDriverUtility wLib = new WebDriverUtility();
+	public static WebDriver sdriver = null;
+
+	@BeforeSuite(groups= {"smoke","regression"})
+	public void beforeSuite() {
+		System.out.println("Establish the database connection");
 	}
-	else if(BROWSER.equalsIgnoreCase("edge")) {
-		driver=new EdgeDriver();
+
+	@BeforeTest(groups= {"smoke","regression"})
+	public void beforeTest() {
+		System.out.println("Pre-conditions for parallel execution");
 	}
-	else if(BROWSER.equalsIgnoreCase("firefox")) {
-		driver=new FirefoxDriver();
+
+	@BeforeClass(groups= {"smoke","regression"})
+	public void beforeClass() throws IOException {
+
+		Reporter.log("Launching the Browser", true);
+
+		String BROWSER = propLib.getPropertiesUtilityFile("Browser");
+
+		ChromeOptions settings = new ChromeOptions();
+		Map<String, Object> prefs = new HashMap<>();
+		prefs.put("profile.password_manager_leak_detection", false);
+		settings.setExperimentalOption("prefs", prefs);
+
+		if (BROWSER.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver(settings);
+		} else if (BROWSER.equalsIgnoreCase("edge")) {
+			driver = new EdgeDriver();
+		} else if (BROWSER.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+		}
+
+		sdriver = driver;
+
+		driver.manage().window().maximize();
+
+		wLib.implicitlyWait(driver);
+
 	}
-	
-	sdriver=driver;
 
-	driver.manage().window().maximize();
+	@BeforeMethod(groups= {"smoke","regression"})
+	public void beforeMethod() throws IOException {
 
-	wLib.implicitlyWait(driver);
-	  
-  }
-  
-  @BeforeMethod
-  public void beforeMethod() throws IOException {
-	  
-	String URL = propLib.getPropertiesUtilityFile("URl");
-	String USERNAME = propLib.getPropertiesUtilityFile("username");
-	String PASSWORD = propLib.getPropertiesUtilityFile("password");
-  
-	LoginPage_POM loginpagePOM=new LoginPage_POM(driver);
+		String URL = propLib.getPropertiesUtilityFile("URl");
+		String USERNAME = propLib.getPropertiesUtilityFile("username");
+		String PASSWORD = propLib.getPropertiesUtilityFile("password");
 
-	loginpagePOM.loginToApp(URL, USERNAME, PASSWORD);
-  }
-	  
-  @Test
-  public void Test() {
-	  
-  }
-  
- @AfterMethod
-  public void afterMethod() {
-	 HomePage homepage=new HomePage(driver);
-	 homepage.logout();
-  }
+		LoginPage_POM loginpagePOM = new LoginPage_POM(driver);
 
-  @AfterClass
-  public void afterClass() {
-	  Reporter.log("Driver Quit",true);
-	  driver.quit();
-  }
+		loginpagePOM.loginToApp(URL, USERNAME, PASSWORD);
+	}
 
-  @AfterTest
-  public void afterTest() {
-	  System.out.println("Post-conditions for parallel execution");
-  }
+	@AfterMethod(groups= {"smoke","regression"})
+	public void afterMethod() {
+		HomePage homepage = new HomePage(driver);
+		homepage.logout();
+	}
 
-  @AfterSuite
-  public void afterSuite() {
-	  System.out.println("Close the database connection");
-  }
+	@AfterClass(groups= {"smoke","regression"})
+	public void afterClass() {
+		Reporter.log("Driver Quit", true);
+		driver.quit();
+	}
+
+	@AfterTest(groups= {"smoke","regression"})
+	public void afterTest() {
+		System.out.println("Post-conditions for parallel execution");
+	}
+
+	@AfterSuite(groups= {"smoke","regression"})
+	public void afterSuite() {
+		System.out.println("Close the database connection");
+	}
 
 }

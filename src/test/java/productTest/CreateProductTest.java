@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import genericUtilities.BaseClass;
@@ -23,6 +24,8 @@ import utility_Files.ExcelUtilityFile;
 import utility_Files.JavaUtilityFile;
 import utility_Files.PropertiesUtilityFile;
 import utility_Files.WebDriverUtility;
+
+@Listeners(genericUtilities.ListenerImplementation.class)
 
 public class CreateProductTest extends BaseClass{
 	
@@ -79,59 +82,59 @@ public class CreateProductTest extends BaseClass{
 	}
 	
 	
-//	@Test
-//	public void Createproduct_with_MandatoryFields_SelectcategoryByValue_Test() throws EncryptedDocumentException, IOException {	
-//
-//		//java library
-//		JavaUtilityFile Jlib=new JavaUtilityFile();
-//		
-//		//data from Excel file 
-//		 String productname = ExceLib.getExcelUtilityFile("createProduct", 4, 2);
-//		 String productcategory = ExceLib.getExcelUtilityFile("createProduct", 4, 3);
-//		 String productQuantity = ExceLib.getExcelUtilityFile("createProduct", 4, 4);
-//		 String productPricePerUnit = ExceLib.getExcelUtilityFile("createProduct", 4, 5);
-//		 String productvendor = ExceLib.getExcelUtilityFile("createProduct", 4, 6);
-//		
-//		//Home page pom class
-//		HomePage homepagepom=new HomePage(driver);
-//		
-//		//product page pom
-//		ProductPage productpagepom=new ProductPage(driver);
-//		
-//		//Add product page POM
-//		AddProductpage addProductpagePOM=new AddProductpage(driver);
-//		
-//		//IN NAVBAR CLICK ON PRODUCTS OPTION
-//		homepagepom.getProductsBtn().click();
-//		
-//		//Click on Add product button
-//		productpagepom.getAddProductBtn().click();
-//		
-//		//now entered into add product page
-//		addProductpagePOM.getProductNameTf().sendKeys(productname+"_"+Jlib.generateThreeDigitNum());
-//		 WebElement productCategoryDropdwon = addProductpagePOM.getProductCategoryTf();
-//		 wLib.select(productCategoryDropdwon, productcategory);
-//		addProductpagePOM.getProductQuantityTf().sendKeys(productQuantity);
-//		addProductpagePOM.getProductPriceTf().clear();
-//		addProductpagePOM.getProductPriceTf().sendKeys(productPricePerUnit);
-//		WebElement VendorDropdwon = addProductpagePOM.getProductVendorIdTf();
-//		wLib.select(VendorDropdwon,productvendor);
-//		addProductpagePOM.getProductAddBtn().click();
-//		
-//		//verify the toast
-//		
-//		WebElement alertmsg = homepagepom.getToastMsg();
-//		wLib.waitUntilElementToBeVisible(driver, alertmsg);
-//		if(alertmsg.getText().contains("Successfully Added")) {
-//			System.out.println("Product Successfully Added");
-//		}
-//		else {
-//			System.out.println("Product not added");
-//		}
-//
-//		homepagepom.getToastCloseBtn().click();
-//
-//	}
+	@Test
+	public void Createproduct_with_MandatoryFields_SelectcategoryByValue_Test() throws EncryptedDocumentException, IOException {	
+
+		//java library
+		JavaUtilityFile Jlib=new JavaUtilityFile();
+		
+		//data from Excel file 
+		 String productname = ExceLib.getExcelUtilityFile("createProduct", 4, 2);
+		 String productcategory = ExceLib.getExcelUtilityFile("createProduct", 4, 3);
+		 String productQuantity = ExceLib.getExcelUtilityFile("createProduct", 4, 4);
+		 String productPricePerUnit = ExceLib.getExcelUtilityFile("createProduct", 4, 5);
+		 String productvendor = ExceLib.getExcelUtilityFile("createProduct", 4, 6);
+		
+		//Home page pom class
+		HomePage homepagepom=new HomePage(driver);
+		
+		//product page pom
+		ProductPage productpagepom=new ProductPage(driver);
+		
+		//Add product page POM
+		AddProductpage addProductpagePOM=new AddProductpage(driver);
+		
+		//IN NAVBAR CLICK ON PRODUCTS OPTION
+		homepagepom.getProductsBtn().click();
+		
+		//Click on Add product button
+		productpagepom.getAddProductBtn().click();
+		
+		//now entered into add product page
+		addProductpagePOM.getProductNameTf().sendKeys(productname+"_"+Jlib.generateThreeDigitNum());
+		 WebElement productCategoryDropdwon = addProductpagePOM.getProductCategoryTf();
+		 wLib.select(productCategoryDropdwon, productcategory);
+		addProductpagePOM.getProductQuantityTf().sendKeys(productQuantity);
+		addProductpagePOM.getProductPriceTf().clear();
+		addProductpagePOM.getProductPriceTf().sendKeys(productPricePerUnit);
+		WebElement VendorDropdwon = addProductpagePOM.getProductVendorIdTf();
+		wLib.select(VendorDropdwon,productvendor);
+		addProductpagePOM.getProductAddBtn().click();
+		
+		//verify the toast
+		
+		WebElement alertmsg = homepagepom.getToastMsg();
+		wLib.waitUntilElementToBeVisible(driver, alertmsg);
+		if(alertmsg.getText().contains("Successfully Added")) {
+			System.out.println("Product Successfully Added");
+		}
+		else {
+			System.out.println("Product not added");
+		}
+
+		homepagepom.getToastCloseBtn().click();
+
+	}
 	
 	
 	@Test

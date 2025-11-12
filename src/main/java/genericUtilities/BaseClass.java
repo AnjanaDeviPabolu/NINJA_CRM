@@ -34,7 +34,7 @@ public class BaseClass {
 	public PropertiesUtilityFile propLib=new PropertiesUtilityFile();
 	public ExcelUtilityFile ExceLib=new ExcelUtilityFile();
 	public WebDriverUtility wLib=new WebDriverUtility();
-	
+	public static WebDriver sdriver=null;
 	
   @BeforeSuite
   public void beforeSuite() {
@@ -69,6 +69,8 @@ public class BaseClass {
 	else if(BROWSER.equalsIgnoreCase("firefox")) {
 		driver=new FirefoxDriver();
 	}
+	
+	sdriver=driver;
 
 	driver.manage().window().maximize();
 

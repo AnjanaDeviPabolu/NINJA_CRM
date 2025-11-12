@@ -3,11 +3,19 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ninjaCRM.Assertions">
+      <class name="campaignTest.CreateCampaign_Test">
         <methods>
-          <include name="SoftNullAssert"/>
+          <include name="afterClass"/>
+          <include name="afterSuite"/>
+          <include name="beforeClass"/>
+          <include name="beforeMethod"/>
+          <include name="CreateCampaign_With_MandatoryFields_Test"/>
+          <include name="beforeTest"/>
+          <include name="afterMethod"/>
+          <include name="afterTest"/>
+          <include name="beforeSuite"/>
         </methods>
-      </class> <!-- ninjaCRM.Assertions -->
+      </class> <!-- campaignTest.CreateCampaign_Test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

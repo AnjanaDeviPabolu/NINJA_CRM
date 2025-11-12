@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import genericUtilities.BaseClass;
@@ -27,9 +28,11 @@ import utility_Files.JavaUtilityFile;
 import utility_Files.PropertiesUtilityFile;
 import utility_Files.WebDriverUtility;
 
+@Listeners(genericUtilities.ListenerImplementation.class)
+
 public class CreateContactTest extends BaseClass{
 	
-	@Test(priority = 1)
+	@Test(groups = {"smoke","regression"})
 	public void CreateContact_With_MandatoryFields_Test() throws EncryptedDocumentException, IOException {
 
 //		PropertiesUtilityFile propLib=new PropertiesUtilityFile();
@@ -161,7 +164,7 @@ public class CreateContactTest extends BaseClass{
 	}
 	
 	
-	@Test(priority = 2)
+	@Test(groups = {"smoke"})
 	public void CreateContact_With_Department_Test() throws EncryptedDocumentException, IOException {
 
 		 String CampaignName = ExceLib.getExcelUtilityFile("Create_Contact", 4, 2);
@@ -255,7 +258,7 @@ public class CreateContactTest extends BaseClass{
 	}
 	
 	
-	@Test(priority = 3)
+	@Test(groups = {"smoke"})
 	public void CreateContact_With_Email_Test() throws EncryptedDocumentException, IOException {
 		 
 		 //get testScript data from Excel file

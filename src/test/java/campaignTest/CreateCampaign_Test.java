@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import genericUtilities.BaseClass;
@@ -24,9 +25,11 @@ import utility_Files.JavaUtilityFile;
 import utility_Files.PropertiesUtilityFile;
 import utility_Files.WebDriverUtility;
 
+@Listeners(genericUtilities.ListenerImplementation.class)
+
 public class CreateCampaign_Test extends BaseClass{
 	
-	@Test
+	@Test(groups = {"smoke","regression"})
 	public void CreateCampaign_With_MandatoryFields_Test() throws EncryptedDocumentException, IOException {
 
 		String CampaignName = ExceLib.getExcelUtilityFile("Create_Campaign", 1, 2);
@@ -56,14 +59,16 @@ public class CreateCampaign_Test extends BaseClass{
 //			System.out.println("campaign not created");
 //		}
 		
-		Assert.assertTrue(msg.contains(AlertMsg));
+		homepage.getToastCloseBtn().click();	
 		
-		homepage.getToastCloseBtn().click();	 
+		Assert.assertTrue(msg.contains("hjkrytuyiubnm"));
+		
+		 
 
 	}
 	
 	
-	@Test
+	@Test(groups = {"smoke"})
 	public void CreateCampaign_With_status_Test() throws IOException {
 
 		String CampaignName = ExceLib.getExcelUtilityFile("Create_Campaign", 4, 2);
@@ -103,7 +108,7 @@ public class CreateCampaign_Test extends BaseClass{
 	}
 	
 	
-	@Test
+	@Test(groups = {"smoke"})
 	public void CreateCampaign_With_ExpectedCloseDate_Test() throws EncryptedDocumentException, IOException {
 		
 //		PropertiesUtilityFile propLib=new PropertiesUtilityFile();
@@ -182,7 +187,7 @@ public class CreateCampaign_Test extends BaseClass{
 	}
 	
 	
-	@Test
+	@Test(groups = {"smoke"})
 	public void CreateCampaign_CompleteTest() throws IOException {
 
 		 String CampaignName = ExceLib.getExcelUtilityFile("Create_Campaign", 10, 2);

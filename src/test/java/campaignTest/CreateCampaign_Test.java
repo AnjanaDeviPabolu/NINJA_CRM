@@ -65,6 +65,8 @@ public class CreateCampaign_Test extends BaseClass{
 //		}	
 		
 		homepage.getToastCloseBtn().click();
+		
+		System.out.println("ended");
 		 
 
 	}
